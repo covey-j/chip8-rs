@@ -74,7 +74,7 @@ pub fn main() {
     }).unwrap();
     device.resume();
  
-    let window = video_subsystem.window("CHIP-8 Interpreter ({})", 800, 600)
+    let window = video_subsystem.window("CHIP-8 Interpreter", 800, 600)
         .position_centered()
         .build()
         .unwrap();
