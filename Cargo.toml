@@ -1,0 +1,12 @@
+[package]
+name = "chip8-rs"
+version = "0.1.0"
+authors = ["crumpmasterjc <jcovey94@gmail.com>"]
+edition = "2018"
+
+# See more keys and their definitions at https://doc.rust-lang.org/cargo/reference/manifest.html
+
+[dependencies]
+rand = "0.8.3"
+sdl2 = "0.34.3"
+tinyfiledialogs = "3.3.10"
