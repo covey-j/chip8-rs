@@ -45,12 +45,11 @@ pub fn main() {
         "Open rom",
         "./",
         filter
-    );
-    let binary : Vec<u8>;
-    match rom_path {
-        None => binary = Vec::new(),
-        _ => binary = std::fs::read(rom_path.expect("")).unwrap()
-    }
+    ).expect("Failed to open file!");
+    let binary = match std::fs::read(rom_path) {
+        Ok(s) => s,
+        Err(_) => Vec::new()
+    };
     let mut machine_state : Chip8 = Chip8::new();
     machine_state.load_fonts();
     machine_state.load_rom(binary);
@@ -156,11 +155,9 @@ pub fn main() {
             lock.volume = 0.0;
         }
         
-        let t = frametime.checked_sub(instant.elapsed());
-        match t {
+        match frametime.checked_sub(instant.elapsed()) {
             None => (),
-            _ => ::std::thread::sleep(t.unwrap())
-        };
-        
+            Some(t) => ::std::thread::sleep(t)
+        };        
     }
 }
